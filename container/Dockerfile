@@ -20,7 +20,9 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
   openssh-client \
   vim.tiny \
   lsb-release \
-  python \
+  python3.9 \
+  python3.9-venv \
+  python3.9-dev \
   python3-pip \
   python3-opencv \
   && rm -rf /var/lib/apt/lists/*
@@ -33,7 +35,7 @@ ENV LANG=en_US.UTF-8
 RUN mkdir /projects
 
 # Copy the sample project
-COPY ./sample-project /projects/
+COPY ./sample-project /projects
 
 # Create a non-root user
 RUN adduser --disabled-password --gecos '' --shell /bin/bash coder \
