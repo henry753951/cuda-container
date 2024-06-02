@@ -2,6 +2,7 @@ import os
 import subprocess
 import docker
 from PyInquirer import prompt, Separator
+import time
 
 
 def ask_questions():
@@ -113,6 +114,7 @@ def deploy_container():
     print(f"Container {answers['project_name']}-gpu-cs-1 is running on IP {ip_cs} and port 8443")
     print(f"Container {answers['project_name']}-gpu-novnc-1 is running on IP {ip_novnc} and port 6060")
     
+    time.sleep(2)
     # run the following command to get the password
     exec_command = container_cs.exec_run('cat /home/coder/.config/code-server/config.yaml', stdout=True, stderr=True, stdin=False)
     print(exec_command.output.decode())

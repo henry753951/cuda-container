@@ -15,7 +15,11 @@ services:
           devices:
           - driver: nvidia
             count: 1
-            capabilities: [gpu, utility]
+            capabilities:
+              - gpu
+              - utility # nvidia-smi
+              - compute # CUDA
+              - video # NVENC/NVDEC
     networks:
       - gpu-network
     ports:
