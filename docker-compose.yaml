@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         - CUDA_IMAGE=${CUDA_IMAGE}
-        - CODE_SERVER_VERSION=${CODE_SERVER_VERSION}
+        - CODESERVER_VERSION=${CODE_SERVER_VERSION}
     environment:
       - "DISPLAY=gpu-novnc:0.0"
     deploy:

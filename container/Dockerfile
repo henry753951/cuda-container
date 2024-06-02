@@ -1,5 +1,5 @@
 ARG CUDA_IMAGE
-ARG CODE_SERVER_VERSION
+ARG CODESERVER_VERSION
 FROM nvidia/cuda:${CUDA_IMAGE}
 
 
@@ -51,7 +51,7 @@ RUN curl -fsSL "https://github.com/boxboat/fixuid/releases/download/v0.4.1/fixui
 
 # Install code-server
 WORKDIR /tmp
-RUN echo "Downloading code-server v${CODE_SERVER_VERSION} for ${ARCH}"
+ENV CODE_SERVER_VERSION=${CODESERVER_VERSION}
 RUN curl -fOL https://github.com/cdr/code-server/releases/download/v${CODE_SERVER_VERSION}/code-server_${CODE_SERVER_VERSION}_${ARCH}.deb
 RUN dpkg -i ./code-server_${CODE_SERVER_VERSION}_${ARCH}.deb && rm ./code-server_${CODE_SERVER_VERSION}_${ARCH}.deb
 COPY ./entrypoint.sh /usr/bin/entrypoint.sh
