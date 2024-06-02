@@ -107,8 +107,8 @@ def deploy_container():
     container_cs = client.containers.get(f'{answers["project_name"]}-gpu-cs-1')
     container_novnc = client.containers.get(f'{answers["project_name"]}-gpu-novnc-1')
 
-    ip_cs = container_cs.attrs['NetworkSettings']['Networks']['gpu-network']['IPAddress']
-    ip_novnc = container_novnc.attrs['NetworkSettings']['Networks']['gpu-network']['IPAddress']
+    ip_cs = container_cs.attrs['NetworkSettings']['Networks'][F'{answers["project_name"]}_gpu-network']['IPAddress']
+    ip_novnc = container_novnc.attrs['NetworkSettings']['Networks'][F'{answers["project_name"]}_gpu-network']['IPAddress']
 
     print(f"Container {answers['project_name']}-gpu-cs-1 is running on IP {ip_cs} and port 8443")
     print(f"Container {answers['project_name']}-gpu-novnc-1 is running on IP {ip_novnc} and port 6060")
