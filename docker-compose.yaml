@@ -1,4 +1,4 @@
-version: '1.0'
+name: ${PROJECT_NAME}
 services:
   gpu-cs:
     container_name: gpu-cs
