@@ -98,7 +98,7 @@ def deploy_container():
 
     compose_env = os.environ.copy()
     # Run docker-compose up with the environment variables
-    subprocess.run(['docker', 'compose', 'up', '-d'], check=True, env=compose_env)
+    subprocess.run(['docker', 'compose', 'up', '-p', os.environ['PROJECT_NAME'], '-d'], check=True, env=compose_env)
 
     # Initialize Docker client
     client = docker.from_env()
