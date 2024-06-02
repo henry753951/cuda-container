@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check if Python 3 is installed
-if ! command -v python3 &> /dev/null
+if ! command -v python3 &> /dev/null;
 then
     echo "Python 3 could not be found. Do you want to install it? (y/n)"
     read response
@@ -12,8 +12,7 @@ then
 fi
 
 # Check if pip is installed
-if ! command -v pip &> /dev/null
-then
+if ! command -v pip &> /dev/null;
     echo "pip could not be found. Do you want to install it? (y/n)"
     read response
     if [ "$response" != "y" ]; then
