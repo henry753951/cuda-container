@@ -51,7 +51,6 @@ RUN curl -fsSL "https://github.com/boxboat/fixuid/releases/download/v0.4.1/fixui
 
 # Install code-server
 WORKDIR /tmp
-ENV CODE_SERVER_VERSION=${CODE_SERVER_VERSION}
 RUN curl -fOL https://github.com/cdr/code-server/releases/download/v${CODE_SERVER_VERSION}/code-server_${CODE_SERVER_VERSION}_${ARCH}.deb
 RUN dpkg -i ./code-server_${CODE_SERVER_VERSION}_${ARCH}.deb && rm ./code-server_${CODE_SERVER_VERSION}_${ARCH}.deb
 COPY ./entrypoint.sh /usr/bin/entrypoint.sh
