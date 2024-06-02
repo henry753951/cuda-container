@@ -10,7 +10,7 @@ fi
 source venv/bin/activate
 
 # Run the docker CLI script
-python3 docker_cli.py
+python3.9 docker_cli.py
 
 # Deactivate the virtual environment
 deactivate
