@@ -104,8 +104,8 @@ def deploy_container():
     client = docker.from_env()
 
     # Get container information
-    container_cs = client.containers.get(f'gpu-cs')
-    container_novnc = client.containers.get(f'gpu-novnc')
+    container_cs = client.containers.get(f'{answers["project_name"]}-cs-1')
+    container_novnc = client.containers.get(f'{answers["project_name"]}-novnc-1')
 
     ip_cs = container_cs.attrs['NetworkSettings']['Networks']['gpu-network']['IPAddress']
     ip_novnc = container_novnc.attrs['NetworkSettings']['Networks']['gpu-network']['IPAddress']
