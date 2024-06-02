@@ -1,7 +1,6 @@
 name: ${PROJECT_NAME}
 services:
   gpu-cs:
-    container_name: gpu-cs
     build:
       context: container
       dockerfile: Dockerfile
@@ -26,7 +25,6 @@ services:
     volumes:
       - "${PROJECTS_VOLUME}:/projects"
   gpu-novnc:
-    container_name: gpu-novnc
     image: "theasp/novnc:latest"
     environment:
       - "DISPLAY_WIDTH=${NOVNC_WIDTH}"
