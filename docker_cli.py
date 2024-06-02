@@ -16,9 +16,8 @@ def ask_questions():
             'name': 'cuda_image',
             'message': 'Select CUDA image:',
             'choices': [
-                '11.4.3-base-ubuntu20.04',
-                '11.2.2-base-ubuntu18.04',
-                '10.1-base-ubuntu16.04',
+                '11.3.1-cudnn8-devel-ubuntu20.04',
+                '12.4.1-cudnn-devel-ubuntu22.04',
                 Separator(),
                 'Other',
             ],
@@ -97,8 +96,9 @@ def deploy_container():
     os.environ['UID'] = str(os.getuid())
     os.environ['GID'] = str(os.getgid())
 
+    compose_env = os.environ.copy()
     # Run docker-compose up with the environment variables
-    subprocess.run(['docker', 'compose', 'up', '-d'], check=True)
+    subprocess.run(['docker', 'compose', 'up', '-d'], check=True, env=compose_env)
 
     # Initialize Docker client
     client = docker.from_env()

@@ -49,19 +49,10 @@ if ! command -v pip3.9 &> /dev/null;
     command sudo apt-get install python3.9-venv
 fi
 
-# Create a virtual environment
-python3.9 -m venv venv
-
-# Activate the virtual environment
-source venv/bin/activate
-
 # Upgrade pip
-pip install --upgrade pip
+sudo python3.9 -m pip install --upgrade pip
 
 # Install required packages
-pip install -r requirements.txt
+sudo python3.9 -m pip install -r requirements.txt
 
-# Deactivate the virtual environment
-deactivate
-
-echo "Setup complete. To activate the virtual environment, run 'source venv/bin/activate'.
+echo "Setup complete."
