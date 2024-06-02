@@ -19,6 +19,7 @@ if ! command -v pip &> /dev/null;
         exit 1
     fi
     command sudo apt-get install python3-pip
+    command sudo apt-get install python3-venv
 fi
 
 # Create a virtual environment
