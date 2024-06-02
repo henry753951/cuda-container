@@ -110,8 +110,12 @@ def deploy_container():
     ip_cs = container_cs.attrs['NetworkSettings']['Networks']['gpu-network']['IPAddress']
     ip_novnc = container_novnc.attrs['NetworkSettings']['Networks']['gpu-network']['IPAddress']
 
-    print(f"Container {answers['project_name']}-cs is running on IP {ip_cs} and port 8443")
-    print(f"Container {answers['project_name']}-novnc is running on IP {ip_novnc} and port 6060")
+    print(f"Container {answers['project_name']}-gpu-cs-1 is running on IP {ip_cs} and port 8443")
+    print(f"Container {answers['project_name']}-gpu-novnc-1 is running on IP {ip_novnc} and port 6060")
+    
+    # run the following command to get the password
+    exec_command = container_cs.exec_run('cat /home/coder/.config/code-server/config.yaml', stdout=True, stderr=True, stdin=False)
+    print(exec_command.output.decode())
 
 
 if __name__ == '__main__':
