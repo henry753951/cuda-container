@@ -3,15 +3,23 @@
 # Check if Python 3 is installed
 if ! command -v python3 &> /dev/null
 then
-    echo "Python 3 could not be found. Please install Python 3."
-    exit 1
+    echo "Python 3 could not be found. Do you want to install it? (y/n)"
+    read response
+    if [ "$response" != "y" ]; then
+        exit 1
+    fi
+    command sudo apt-get install python3
 fi
 
 # Check if pip is installed
 if ! command -v pip &> /dev/null
 then
-    echo "pip could not be found. Please install pip."
-    exit 1
+    echo "pip could not be found. Do you want to install it? (y/n)"
+    read response
+    if [ "$response" != "y" ]; then
+        exit 1
+    fi
+    command sudo apt-get install python3-pip
 fi
 
 # Create a virtual environment
