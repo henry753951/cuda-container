@@ -8,7 +8,9 @@ then
         exit 1
     fi
     command sudo apt-get update
-    command for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+    for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do
+        command sudo apt-get remove -y $pkg
+    done
     command sudo apt-get update
     command sudo apt-get install ca-certificates curl
     command sudo install -m 0755 -d /etc/apt/keyrings
