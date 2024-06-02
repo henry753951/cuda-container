@@ -1,0 +1,43 @@
+version: '1.0'
+services:
+  gpu-cs:
+    container_name: gpu-cs
+    build:
+      context: container
+      dockerfile: Dockerfile
+      args:
+        - CUDA_IMAGE=${CUDA_IMAGE}
+        - CODE_SERVER_VERSION=${CODE_SERVER_VERSION}
+    environment:
+      - "DISPLAY=gpu-novnc:0.0"
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: nvidia
+            count: 1
+            capabilities: [gpu, utility]
+    networks:
+      - gpu-network
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+    user: "${UID}:${GID}"
+    volumes:
+      - "${PROJECTS_VOLUME}:/projects"
+  gpu-novnc:
+    container_name: gpu-novnc
+    image: "theasp/novnc:latest"
+    environment:
+      - "DISPLAY_WIDTH=${NOVNC_WIDTH}"
+      - "DISPLAY_HEIGHT=${NOVNC_HEIGHT}"
+      - RUN_XTERM=no
+      - RUN_FLUXBOX=yes
+    networks:
+      - gpu-network
+    restart: unless-stopped
+    ports:
+      - 6060:8080
+
+networks:
+  gpu-network:
